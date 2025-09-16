@@ -1,0 +1,1276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🇩🇪 Visit Germany - From Frankfurt with Love 🇹🇼</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            color: #333;
+            overflow: hidden;
+            height: 100vh;
+        }
+
+        .presentation-container {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            position: relative;
+        }
+
+        .slide {
+            display: none;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(250, 250, 250, 0.98) 100%);
+            border-radius: 24px;
+            box-shadow: 
+                0 32px 64px rgba(0, 0, 0, 0.25),
+                0 16px 32px rgba(0, 0, 0, 0.15),
+                inset 0 1px 0 rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 204, 0, 0.2);
+            width: 95vw;
+            max-width: 1200px;
+            height: 85vh;
+            max-height: 800px;
+            padding: 32px 40px;
+            text-align: center;
+            position: relative;
+            overflow-y: auto;
+            animation: slideIn 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        .slide.active {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(40px) scale(0.96);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        .slide::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: linear-gradient(90deg, #000000 0%, #DD0000 50%, #FFCC00 100%);
+            border-radius: 24px 24px 0 0;
+        }
+
+        h1 {
+            font-size: 3.2rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #DD0000 0%, #000000 50%, #DD0000 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            letter-spacing: -0.02em;
+        }
+
+        h2 {
+            font-size: 2.4rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: #1a1a2e;
+            position: relative;
+            display: inline-block;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -6px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, #FFCC00, #DD0000);
+            border-radius: 2px;
+        }
+
+        h3 {
+            font-size: 1.6rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: #DD0000;
+        }
+
+        .large-text {
+            font-size: 1.4rem;
+            line-height: 1.5;
+            margin: 16px 0;
+            color: #2c3e50;
+            font-weight: 500;
+        }
+
+        .image-placeholder {
+            width: 100%;
+            height: 200px;
+            background: #f8f9fa;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 10px 0;
+            font-size: 1.1rem;
+            color: #6c757d;
+            text-align: center;
+            padding: 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .image-placeholder::before {
+            display: none;
+        }
+
+        @keyframes shimmer {
+            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+        }
+
+        .food-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 14px 20px;
+            margin: 10px 0 8px 0;
+            max-width: 1000px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        @media (max-width: 1024px) {
+            .food-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+        @media (max-width: 767px) {
+            .food-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        .food-item {
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+            border-radius: 16px;
+            padding: 16px;
+            box-shadow: 
+                0 8px 32px rgba(0, 0, 0, 0.08),
+                0 4px 16px rgba(0, 0, 0, 0.04);
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .food-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(255, 204, 0, 0.1), rgba(221, 0, 0, 0.1));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .food-item:hover {
+            transform: translateY(-8px) scale(1.05);
+            border-color: #FFCC00;
+            box-shadow: 
+                0 20px 40px rgba(221, 0, 0, 0.15),
+                0 8px 24px rgba(0, 0, 0, 0.1);
+        }
+
+        .food-item:hover::before {
+            opacity: 1;
+        }
+
+        .food-item.selected {
+            border-color: #DD0000;
+            background: linear-gradient(135deg, #FFCC00, #FFD700);
+            transform: translateY(-8px) scale(1.05);
+        }
+
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin: 32px 0;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .comparison-item {
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+            border-radius: 24px;
+            padding: 40px 32px;
+            border-left: 10px solid #DD0000;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.12), 0 10px 20px rgba(0,0,0,0.07);
+            transition: all 0.3s ease;
+            font-size: 1.35rem;
+        }
+
+        .comparison-item.taiwan {
+            border-left-color: #FFCC00;
+        }
+
+        @media (max-width: 1024px) {
+            .comparison-grid {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+            .comparison-item {
+                font-size: 1.15rem;
+                padding: 28px 14px;
+            }
+        }
+        @media (max-width: 767px) {
+            .comparison-grid {
+                grid-template-columns: 1fr;
+                gap: 14px;
+            }
+            .comparison-item {
+                font-size: 1.02rem;
+                padding: 16px 4px;
+            }
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            margin: 20px 0;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .benefit-card {
+            background: linear-gradient(135deg, #FFCC00 0%, #FFD700 50%, #FFA500 100%);
+            border-radius: 16px;
+            padding: 20px 16px;
+            color: #1a1a2e;
+            font-weight: 600;
+            transform: perspective(1000px) rotateY(0deg);
+            transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 
+                0 12px 24px rgba(255, 204, 0, 0.3),
+                0 6px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        .benefit-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .benefit-card:hover {
+            transform: perspective(1000px) rotateY(8deg) scale(1.05);
+            box-shadow: 
+                0 20px 40px rgba(221, 0, 0, 0.2),
+                0 8px 16px rgba(0, 0, 0, 0.1);
+        }
+
+        .benefit-card:hover::before {
+            left: 100%;
+        }
+
+        .interactive-button {
+            background: linear-gradient(135deg, #DD0000 0%, #CC0000 50%, #AA0000 100%);
+            color: white;
+            border: none;
+            padding: 16px 32px;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            cursor: pointer;
+            margin: 12px;
+            transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+            box-shadow: 
+                0 8px 24px rgba(221, 0, 0, 0.3),
+                0 4px 12px rgba(0, 0, 0, 0.15);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .interactive-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .interactive-button:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 
+                0 12px 32px rgba(221, 0, 0, 0.4),
+                0 6px 16px rgba(0, 0, 0, 0.2);
+            background: linear-gradient(135deg, #FF0000 0%, #DD0000 50%, #BB0000 100%);
+        }
+
+        .interactive-button:hover::before {
+            left: 100%;
+        }
+
+        .navigation {
+            position: fixed;
+            bottom: 32px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 16px;
+            z-index: 1000;
+        }
+
+        .nav-button {
+            background: rgba(26, 26, 46, 0.9);
+            color: white;
+            border: 2px solid #FFCC00;
+            padding: 16px 24px;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+            font-weight: 600;
+            font-size: 1.1rem;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+        }
+
+        .nav-button:hover {
+            background: #FFCC00;
+            color: #1a1a2e;
+            transform: scale(1.1) translateY(-2px);
+            box-shadow: 0 12px 32px rgba(255, 204, 0, 0.4);
+        }
+
+        .slide-counter {
+            position: absolute;
+            top: 32px;
+            right: 32px;
+            background: linear-gradient(135deg, rgba(26, 26, 46, 0.9), rgba(22, 33, 62, 0.9));
+            color: #FFCC00;
+            padding: 12px 20px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 204, 0, 0.3);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+        }
+
+        .pronunciation-word {
+            background: linear-gradient(135deg, #FFCC00 0%, #FFD700 50%, #FFA500 100%);
+            border-radius: 20px;
+            padding: 24px;
+            margin: 16px;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+            display: inline-block;
+            min-width: 180px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 8px 24px rgba(255, 204, 0, 0.3);
+        }
+
+        .pronunciation-word::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .pronunciation-word:hover {
+            transform: scale(1.1) rotate(3deg);
+            background: linear-gradient(135deg, #DD0000, #FF4444);
+            color: white;
+            box-shadow: 0 16px 32px rgba(221, 0, 0, 0.4);
+        }
+
+        .pronunciation-word:hover::before {
+            left: 100%;
+        }
+
+        .qr-code {
+            width: 140px;
+            height: 140px;
+            background: white;
+            border: 3px solid #1a1a2e;
+            border-radius: 16px;
+            margin: 16px auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+            color: #6c757d;
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .qr-code::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, transparent, rgba(255, 204, 0, 0.1), transparent);
+            animation: qrShimmer 2s infinite;
+        }
+
+        @keyframes qrShimmer {
+            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+        }
+
+        .flag-decoration {
+            position: absolute;
+            top: 32px;
+            left: 32px;
+            width: 80px;
+            height: 48px;
+            background: linear-gradient(to bottom, #000000 33%, #DD0000 33% 66%, #FFCC00 66%);
+            border-radius: 8px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .success-message {
+            background: linear-gradient(135deg, #28a745, #20c997);
+            color: white;
+            padding: 16px 24px;
+            border-radius: 50px;
+            margin: 16px 0;
+            display: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            box-shadow: 0 8px 24px rgba(40, 167, 69, 0.3);
+            animation: messageSlide 0.5s ease-out;
+        }
+
+        @keyframes messageSlide {
+            from {
+                opacity: 0;
+                transform: translateY(20px) scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        .fade-in {
+            animation: fadeIn 1s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* iPad and Laptop optimizations */
+        @media (min-width: 768px) and (max-width: 1440px) {
+            .slide {
+                width: 90vw;
+                height: 80vh;
+                padding: 40px;
+            }
+            
+            .food-grid {
+                grid-template-columns: repeat(5, 1fr);
+                gap: 20px;
+            }
+            
+            .benefits-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            
+            .comparison-grid {
+                gap: 24px;
+            }
+        }
+
+        @media (max-width: 767px) {
+            .food-grid {
+                flex-wrap: wrap;
+                gap: 10px 8px;
+            }
+            .image-placeholder {
+                height: 180px;
+                min-width: 120px;
+            }
+            .slide.active .image-placeholder:first-of-type {
+                height: 220px !important;
+                max-width: 95vw;
+            }
+            .benefits-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .comparison-grid {
+                grid-template-columns: 1fr;
+            }
+            h1 {
+                font-size: 2.1rem;
+            }
+            h2 {
+                font-size: 1.4rem;
+            }
+        }
+
+        /* Smooth scrolling for content overflow */
+        .slide {
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+
+        .slide::-webkit-scrollbar {
+            display: none;
+        }
+
+        /* Custom selection colors */
+        ::selection {
+            background: rgba(255, 204, 0, 0.3);
+            color: #1a1a2e;
+        }
+    </style>
+</head>
+<body>
+    <!-- Slide 1: Opening -->
+    <div class="presentation-container">
+        <div class="slide active">
+            <div class="flag-decoration"></div>
+            <div class="slide-counter">1 / 12</div>
+            
+            <h1>🇩🇪 Guten Tag from Frankfurt! 🇹🇼</h1>
+            
+            <div class="image-placeholder" style="height:340px; max-width:340px; margin:0 auto 18px auto; background:#f8f9fa; display:flex; align-items:center; justify-content:center; border-radius:24px; width:100%;">
+                <img src="img/frankfurt.jpg" alt="Frankfurt skyline with presenter" style="width:100%; height:100%; object-fit:cover; border-radius:20px;" />
+            </div>
+            
+            <div class="large-text">
+                Hello! I'm from <strong>Frankfurt, Germany!</strong>
+            </div>
+            
+            <button class="interactive-button pulse" onclick="teachGreeting()">
+                🗣️ Learn "Guten Tag" Together!
+            </button>
+            
+            <div class="success-message" id="greeting-success">
+                Perfect! Everyone say: "GUTEN TAG!" 🎉
+            </div>
+        </div>
+
+        <!-- Slide 2: German Food Mystery -->
+        <div class="slide">
+            <div class="flag-decoration"></div>
+            <div class="slide-counter">2 / 12</div>
+            
+            <h2>🍽️ German Food Mystery</h2>
+            <h3>Find the FAKE German Food!</h3>
+            
+            <div class="food-grid">
+                <div class="food-item" data-food="pretzel" onclick="selectFood(this)">
+                    <div class="image-placeholder" style="height: 160px;">
+                        <img src="img/pretzel.jpg" alt="Traditional German Pretzel" style="width:150px; height:150px; object-fit:cover; border-radius:12px; box-shadow:0 2px 8px rgba(0,0,0,0.07);" />
+                    </div>
+                    <h3>🥨 Pretzel</h3>
+                </div>
+                
+                <div class="food-item" data-food="sausage" onclick="selectFood(this)">
+                    <div class="image-placeholder" style="height: 160px;">
+                        <img src="img/sausage.jpeg" alt="German Bratwurst Sausage" style="width:150px; height:150px; object-fit:cover; border-radius:12px; box-shadow:0 2px 8px rgba(0,0,0,0.07);" />
+                    </div>
+                    <h3>🌭 Sausage</h3>
+                </div>
+                
+                <div class="food-item" data-food="ramen" onclick="selectFood(this)">
+                    <div class="image-placeholder" style="height: 160px;">
+                        <img src="img/ramen.jpg" alt="Japanese Ramen Bowl" style="width:150px; height:150px; object-fit:cover; border-radius:12px; box-shadow:0 2px 8px rgba(0,0,0,0.07);" />
+                    </div>
+                    <h3>🍜 Ramen</h3>
+                </div>
+                
+                <div class="food-item" data-food="beer" onclick="selectFood(this)">
+                    <div class="image-placeholder" style="height: 160px;">
+                        <img src="img/beer.jpg" alt="German Beer Mug" style="width:150px; height:150px; object-fit:cover; border-radius:12px; box-shadow:0 2px 8px rgba(0,0,0,0.07);" />
+                    </div>
+                    <h3>🍺 Beer</h3>
+                </div>
+                
+                <div class="food-item" data-food="sauerkraut" onclick="selectFood(this)">
+                    <div class="image-placeholder" style="height: 160px;">
+                        <img src="img/sauerkraut.jpeg" alt="German Sauerkraut" style="width:150px; height:150px; object-fit:cover; border-radius:12px; box-shadow:0 2px 8px rgba(0,0,0,0.07);" />
+                    </div>
+                    <h3>🥬 Sauerkraut</h3>
+                </div>
+            </div>
+            
+            <div class="success-message" id="food-success">
+                Correct! Ramen is Japanese! 🎌 But I love Asian food too! 😊
+            </div>
+        </div>
+
+        <!-- Slide 3: Stereotypes vs Reality -->
+        <div class="slide">
+            <div class="flag-decoration"></div>
+            <div class="slide-counter">3 / 12</div>
+            
+            <h2>🤔 Me vs German Stereotypes</h2>
+            
+            <div class="comparison-grid">
+                <div class="comparison-item">
+                    <h3>😤 People Think...</h3>
+                    <div class="image-placeholder">
+                        <img src="img/lederhosen.jpg" alt="Stereotype man in lederhosen with beer" style="width:100%; height:100%; object-fit:cover; border-radius:12px;" />
+                    </div>
+                    <p><strong>All Germans wear Lederhosen</strong></p>
+                </div>
+                
+                <div class="comparison-item taiwan">
+                    <h3>😊 Reality...</h3>
+                    <div class="image-placeholder">
+                        <!-- IMAGE NEEDED: Photo of presenter in casual modern clothes -->
+                        <!-- File name: presenter_casual_clothes.jpg -->
+                        👨‍💼 Modern German Reality
+                    </div>
+                    <p><strong>I wear jeans and sneakers like you!</strong></p>
+                </div>
+            </div>
+            
+            <div class="comparison-grid">
+                <div class="comparison-item">
+                    <h3>😤 People Think...</h3>
+                    <div class="image-placeholder">
+                        <img src="img/grumpyface.jpg" alt="Serious grumpy German face" style="width:100%; height:100%; object-fit:cover; border-radius:12px;" />
+                    </div>
+                    <p><strong>Germans are always serious</strong></p>
+                </div>
+                
+                <div class="comparison-item taiwan">
+                    <h3>😊 Reality...</h3>
+                    <div class="image-placeholder">
+                        <!-- IMAGE NEEDED: Presenter smiling and laughing -->
+                        <!-- File name: presenter_smiling.jpg -->
+                        😄 Happy & Friendly
+                    </div>
+                    <p><strong>I love to laugh and have fun!</strong></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 4: Frankfurt Beauty -->
+        <div class="slide">
+            <div class="flag-decoration"></div>
+            <div class="slide-counter">4 / 12</div>
+            
+            <h2>🏙️ Frankfurt is Beautiful!</h2>
+            <h3>My Home City</h3>
+            
+            <div class="comparison-grid">
+                <div class="comparison-item">
+                    <div class="image-placeholder">
+                        <img src="img/frankfurt.jpg" alt="Frankfurt skyline at sunset" style="width:100%; height:100%; object-fit:cover; border-radius:12px;" />
+                    </div>
+                    <h3>🌅 Amazing Skyline</h3>
+                </div>
+                
+                <div class="comparison-item taiwan">
+                    <div class="image-placeholder">
+                        <img src="img/mainuferpark.jpg" alt="River Main with green parks" style="width:100%; height:100%; object-fit:cover; border-radius:12px;" />
+                    </div>
+                    <h3>🌳 Beautiful Nature</h3>
+                </div>
+            </div>
+            
+            <div class="comparison-grid">
+                <div class="comparison-item">
+                    <div class="image-placeholder">
+                        <img src="img/kleinmarkthalle.webp" alt="Frankfurt traditional market" style="width:100%; height:100%; object-fit:cover; border-radius:12px;" />
+                    </div>
+                    <h3>🛍️ Traditional Markets</h3>
+                </div>
+                
+                <div class="comparison-item taiwan">
+                    <div class="image-placeholder">
+                        <!-- IMAGE NEEDED: Students by the river -->
+                        <!-- File name: frankfurt_students_river.jpg -->
+                        👥 Students Enjoying River Life
+                    </div>
+                    <h3>👥 Student Life</h3>
+                </div>
+            </div>
+            
+            <div class="large-text">
+                <strong>Frankfurt = Big City + Beautiful Nature!</strong> 🏙️🌿
+            </div>
+        </div>
+
+        <!-- Slide 5: Frankfurt Local Food -->
+        <div class="slide">
+            <div class="flag-decoration"></div>
+            <div class="slide-counter">5 / 12</div>
+            
+            <h2>🍽️ Frankfurt Local Food</h2>
+            <h3>What We Really Eat</h3>
+            
+            <div class="food-grid">
+                <div class="food-item">
+                    <div class="image-placeholder" style="height: 170px;">
+                        <img src="img/gruenesoße.png" alt="Grüne Soße (Green sauce) with eggs" style="width:160px; height:160px; object-fit:cover; border-radius:12px; box-shadow:0 2px 8px rgba(0,0,0,0.07);" />
+                    </div>
+                    <h3>🥬 Grüne Soße</h3>
+                    <p>Green Sauce with Eggs</p>
+                </div>
+                <div class="food-item">
+                    <div class="image-placeholder" style="height: 170px;">
+                        <!-- IMAGE NEEDED: Apfelwein in special glasses -->
+                        <!-- File name: frankfurt_apfelwein.jpg -->
+                        🍎 Apfelwein
+                    </div>
+                    <h3>🍎 Apfelwein</h3>
+                    <p>Apple Wine</p>
+                </div>
+                <div class="food-item">
+                    <div class="image-placeholder" style="height: 170px;">
+                        <img src="img/pretzel.jpg" alt="Fresh pretzels from bakery" style="width:160px; height:160px; object-fit:cover; border-radius:12px; box-shadow:0 2px 8px rgba(0,0,0,0.07);" />
+                    </div>
+                    <h3>🥨 Fresh Pretzels</h3>
+                    <p>From Local Bakery</p>
+                </div>
+                <div class="food-item">
+                    <div class="image-placeholder" style="height: 170px;">
+                        <!-- IMAGE NEEDED: International food variety -->
+                        <!-- File name: frankfurt_international_food.jpg -->
+                        🌍 International
+                    </div>
+                    <h3>🌍 International</h3>
+                    <p>Asian, Turkish, Italian</p>
+                </div>
+                <div class="food-item">
+                    <div class="image-placeholder" style="height: 170px;">
+                        <!-- IMAGE NEEDED: Presenter eating bubble tea -->
+                        <!-- File name: presenter_bubble_tea.jpg -->
+                        🧋 Bubble Tea
+                    </div>
+                    <h3>🧋 Bubble Tea</h3>
+                    <p style="font-size:0.95em; color:#888;">Rare in Frankfurt, but you can find it!</p>
+                </div>
+            </div>
+            
+            <div class="large-text">
+                <strong>Frankfurt Food = German + International Mix!</strong> 🌟
+            </div>
+        </div>
+
+        <!-- Slide 6: Culture Differences -->
+        <div class="slide">
+            <div class="flag-decoration"></div>
+            <div class="slide-counter">6 / 12</div>
+            
+            <h2>😄 Culture Differences</h2>
+            <h3>Germany vs Taiwan - Funny!</h3>
+            
+            <div class="comparison-grid">
+                <div class="comparison-item">
+                    <h3>🇩🇪 Germans</h3>
+                    <p><strong>Weather:</strong> Always complain! ☔</p>
+                    <p><strong>Time:</strong> Stress if 2 minutes late! ⏰</p>
+                    <p><strong>Saying NO:</strong> Very direct! ❌</p>
+                </div>
+                
+                <div class="comparison-item taiwan">
+                    <h3>🇹🇼 Taiwanese</h3>
+                    <p><strong>Weather:</strong> "At least no typhoon!" 🌦️</p>
+                    <p><strong>Time:</strong> Fashionably late is OK! ⏱️</p>
+                    <p><strong>Saying NO:</strong> Very polite! ✨</p>
+                </div>
+            </div>
+            
+            <button class="interactive-button" onclick="showCultureTip()">
+                🤝 Cultural Exchange Tip!
+            </button>
+            
+            <div class="success-message" id="culture-tip">
+                Best of both worlds: German efficiency + Taiwanese kindness = Perfect! 🌟
+            </div>
+        </div>
+
+        <!-- Slide 7: German University -->
+        <div class="slide">
+            <div class="flag-decoration"></div>
+            <div class="slide-counter">7 / 12</div>
+            
+            <h2>🎓 German University</h2>
+            <h3>Study in Germany = FREE!</h3>
+            
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <h3>⏱️ 3 Years</h3>
+                    <p>Bachelor Degree</p>
+                </div>
+                
+                <div class="benefit-card">
+                    <h3>📅 1-2 Years</h3>
+                    <p>Master Degree</p>
+                </div>
+                
+                <div class="benefit-card">
+                    <h3>💰 NO TUITION</h3>
+                    <p>Even for International!</p>
+                </div>
+                
+                <div class="benefit-card">
+                    <h3>🗣️ English Programs</h3>
+                    <p>Many Options!</p>
+                </div>
+                
+                <div class="benefit-card">
+                    <h3>🏆 Top Quality</h3>
+                    <p>World-Class Education!</p>
+                </div>
+                
+                <div class="benefit-card">
+                    <h3>🌍 Global Recognition</h3>
+                    <p>Respected Worldwide!</p>
+                </div>
+            </div>
+            
+            <div class="image-placeholder">
+                <!-- IMAGE NEEDED: German university campus with international students -->
+                <!-- File name: german_university_campus.jpg -->
+                🏛️ Beautiful German University Campus with International Students
+            </div>
+            
+            <div class="large-text">
+                <strong>Education: No Tuition, but living/travel costs apply! 💶✈️</strong>
+            </div>
+        </div>
+
+        <!-- Slide 8: Greetings Workshop -->
+        <div class="slide">
+            <div class="flag-decoration"></div>
+            <div class="slide-counter">8 / 12</div>
+            
+            <h2>🤝 German Greetings Workshop</h2>
+            <h3>How Germans Say Hello</h3>
+            
+            <div class="comparison-grid">
+                <div class="comparison-item">
+                    <h3>👨 For Men: Handshake</h3>
+                    <p>👁️ Look in eyes</p>
+                    <p>💪 Firm grip</p>
+                    <p>☝️ One shake</p>
+                    
+                    <div class="image-placeholder" style="height: 120px;">
+                        <!-- IMAGE NEEDED: Two men doing proper German handshake -->
+                        <!-- File name: german_handshake_men.jpg -->
+                        🤝 Proper German Handshake
+                    </div>
+                </div>
+                
+                <div class="comparison-item taiwan">
+                    <h3>👩 For Women: Hug or Handshake</h3>
+                    <p>👭 Close friends = Hug</p>
+                    <p>🤝 New people = Handshake</p>
+                    <p>😊 Always smile!</p>
+                    
+                    <div class="image-placeholder" style="height: 120px;">
+                        <!-- IMAGE NEEDED: Women greeting with hug or handshake -->
+                        <!-- File name: german_greeting_women.jpg -->
+                        🫂 Friendly German Greetings
+                    </div>
+                </div>
+            </div>
+            
+            <button class="interactive-button pulse" onclick="startGreetingPractice()">
+                🎯 Practice with Partner!
+            </button>
+            
+            <div class="success-message" id="greeting-practice">
+                Great! Now you know German greetings! 🇩🇪✨
+            </div>
+        </div>
+
+        <!-- Slide 9: Why Come to Germany -->
+        <div class="slide">
+            <div class="flag-decoration"></div>
+            <div class="slide-counter">9 / 12</div>
+            
+            <h2>🚀 Why Come to Germany?</h2>
+            <h3>Your Adventure Awaits!</h3>
+            
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <h3>💰 FREE Education</h3>
+                    <p>Save family money!</p>
+                </div>
+                
+                <div class="benefit-card">
+                    <h3>✈️ Travel Europe</h3>
+                    <p>27 countries easily!</p>
+                </div>
+                
+                <div class="benefit-card">
+                    <h3>🗣️ Learn German</h3>
+                    <p>Cool language skill!</p>
+                </div>
+                
+                <div class="benefit-card">
+                    <h3>👥 International Friends</h3>
+                    <p>Global network!</p>
+                </div>
+                
+                <div class="benefit-card">
+                    <h3>💼 Great Jobs</h3>
+                    <p>Strong economy!</p>
+                </div>
+                
+                <div class="benefit-card">
+                    <h3>🌟 Personal Growth</h3>
+                    <p>Life experience!</p>
+                </div>
+            </div>
+            
+            <div class="large-text">
+                <strong>💙 I can help you apply! 💙</strong>
+            </div>
+            
+            <button class="interactive-button" onclick="showMotivation()">
+                🔥 Get Motivated!
+            </button>
+            
+            <div class="success-message" id="motivation-message">
+                Your dreams can become reality in Germany! Start your journey today! 🌟
+            </div>
+        </div>
+
+        <!-- Slide 10: Let's Connect -->
+        <div class="slide">
+            <div class="flag-decoration"></div>
+            <div class="slide-counter">10 / 12</div>
+            
+            <h2>📱 Let's Connect!</h2>
+            <h3>Be My Friend!</h3>
+            
+            <div class="comparison-grid">
+                <div class="comparison-item">
+                    <h3>📸 Instagram</h3>
+                    <div class="qr-code">
+                            <img src="img/insta.JPG" alt="Instagram QR code" style="width:100%; height:100%; object-fit:cover; border-radius:12px;" />
+                    </div>
+                    <p><strong>Follow my Germany journey!</strong></p>
+                    <a href="https://www.instagram.com/matteo.ise?igsh=MWs1NDQxazJscjJ1eg%3D%3D&utm_source=qr" target="_blank" style="display:inline-block; margin-top:8px; color:#DD0000; font-weight:600; text-decoration:underline; word-break:break-all;">instagram.com/matteo.ise</a>
+                </div>
+                <div class="comparison-item taiwan">
+                    <h3>💬 Line</h3>
+                    <div class="qr-code">
+                         <img src="img/line.JPG" alt="Line app QR code" style="width:100%; height:100%; object-fit:cover; border-radius:12px;" />
+                    </div>
+                    <p><strong>Add me on Line!</strong></p>
+                    <a href="https://line.me/ti/p/N6UxBwLgLZ" target="_blank" style="display:inline-block; margin-top:8px; color:#06C755; font-weight:600; text-decoration:underline; word-break:break-all;">line.me/ti/p/N6UxBwLgLZ</a>
+                    <div style="font-size:0.85em; color:#888; margin-top:8px;">Email: matteo.isemann@email.com</div>
+                </div>
+            </div>
+            
+            <div class="large-text">
+                <strong>📧 Message me about Germany anytime! 📧</strong>
+
+        </div>
+
+        <!-- Slide 11: German Youth Slang Fun -->
+        <div class="slide">
+            <div class="flag-decoration"></div>
+            <div class="slide-counter">11 / 12</div>
+            <h2>🗣️ German Youth Slang Fun!</h2>
+            <h3>Who wants to try? (One brave volunteer!)</h3>
+            <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 16px; margin: 32px 0;">
+            <button type="button" class="pronunciation-word" onclick="pronounceWord(this, 'Geil', 'GUY-l', 'Cool/awesome')">
+                <h3>😎 "Geil"</h3>
+                <p>= Cool, awesome</p>
+            </button>
+            <button type="button" class="pronunciation-word" onclick="pronounceWord(this, 'Läuft', 'LOYFT', 'It’s going well')">
+                <h3>🏃‍♂️ "Läuft"</h3>
+                <p>= It’s going well</p>
+            </button>
+            <button type="button" class="pronunciation-word" onclick="pronounceWord(this, 'Cringe', 'KRINJ', 'Awkward/embarrassing')">
+                <h3>😬 "Cringe"</h3>
+                <p>= Awkward/embarrassing</p>
+            </button>
+            <button type="button" class="pronunciation-word" onclick="pronounceWord(this, 'Ehrenmann', 'EH-ren-mann', 'Legend/bro')">
+                <h3>🤝 "Ehrenmann"</h3>
+                <p>= Legend, bro</p>
+            </button>
+            <button type="button" class="pronunciation-word" onclick="pronounceWord(this, 'Moin', 'MOYN', 'Hi/hello (north)')">
+                <h3>👋 "Moin"</h3>
+                <p>= Hi/hello (north)</p>
+            </button>
+            </div>
+            <div class="large-text">
+                <strong>🏆 One volunteer says it best – gets a prize! 🏆</strong>
+            </div>
+            <div class="success-message" id="pronunciation-success">
+                Geil! Your German youth slang is on point! 🎉
+            </div>
+        </div>
+
+        <!-- Slide 12: Final Message -->
+        <div class="slide">
+            <div class="flag-decoration"></div>
+            <div class="slide-counter">12 / 12</div>
+            
+            <h2>💙 Final Message</h2>
+            <h3>Danke Taiwan!</h3>
+            
+            <div class="image-placeholder">
+                <!-- IMAGE NEEDED: Germany and Taiwan flags together, or friendship symbol -->
+                <!-- File name: germany_taiwan_friendship.jpg -->
+                🇩🇪🤝🇹🇼 Germany-Taiwan Friendship
+            </div>
+            
+            <button class="interactive-button pulse" onclick="finalMessage()" style="font-size: 1.8rem; padding: 24px 48px;">
+                🗣️ Everyone Say Together!
+            </button>
+            
+            <div class="large-text" id="final-text" style="display: none;">
+                <strong style="font-size: 3rem; color: #DD0000;">
+                    "DANKE TAIWAN!" 🇹🇼❤️🇩🇪
+                </strong>
+            </div>
+            
+            <div class="large-text">
+                <strong>💝 I will tell Germany about wonderful Taiwan! 💝</strong>
+            </div>
+            
+            <div class="success-message" id="final-success" style="display: none;">
+                Thank you for this amazing time! See you in Germany! 🚀✨
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <div class="navigation">
+        <button class="nav-button" onclick="previousSlide()">⬅️ Previous</button>
+        <button class="nav-button" onclick="nextSlide()">Next ➡️</button>
+    </div>
+
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        const totalSlides = slides.length;
+
+        function showSlide(n) {
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (n + totalSlides) % totalSlides;
+            slides[currentSlide].classList.add('active');
+        }
+
+        function nextSlide() {
+            showSlide(currentSlide + 1);
+        }
+
+        function previousSlide() {
+            showSlide(currentSlide - 1);
+        }
+
+        // Keyboard navigation
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'ArrowRight' || e.key === ' ') {
+                nextSlide();
+            } else if (e.key === 'ArrowLeft') {
+                previousSlide();
+            }
+        });
+
+        // Interactive functions
+        function teachGreeting() {
+            document.getElementById('greeting-success').style.display = 'block';
+            setTimeout(() => {
+                document.getElementById('greeting-success').style.display = 'none';
+            }, 3000);
+        }
+
+        function selectFood(element) {
+            // Clear previous selections
+            document.querySelectorAll('.food-item').forEach(item => {
+                item.classList.remove('selected');
+            });
+            
+            element.classList.add('selected');
+            
+            if (element.dataset.food === 'ramen') {
+                document.getElementById('food-success').style.display = 'block';
+                setTimeout(() => {
+                    document.getElementById('food-success').style.display = 'none';
+                }, 4000);
+            }
+        }
+
+        function showCultureTip() {
+            document.getElementById('culture-tip').style.display = 'block';
+            setTimeout(() => {
+                document.getElementById('culture-tip').style.display = 'none';
+            }, 4000);
+        }
+
+        function startGreetingPractice() {
+            document.getElementById('greeting-practice').style.display = 'block';
+            setTimeout(() => {
+                document.getElementById('greeting-practice').style.display = 'none';
+            }, 3000);
+        }
+
+        function showMotivation() {
+            document.getElementById('motivation-message').style.display = 'block';
+            setTimeout(() => {
+                document.getElementById('motivation-message').style.display = 'none';
+            }, 4000);
+        }
+
+        function showContact() {
+            document.getElementById('contact-success').style.display = 'block';
+            setTimeout(() => {
+                document.getElementById('contact-success').style.display = 'none';
+            }, 3000);
+        }
+
+        function pronounceWord(element, word, pronunciation, meaning) {
+            element.style.transform = 'scale(1.2) rotate(5deg)';
+            element.style.background = 'linear-gradient(45deg, #DD0000, #FF4444)';
+            element.style.color = 'white';
+            
+            document.getElementById('pronunciation-success').style.display = 'block';
+            
+            setTimeout(() => {
+                element.style.transform = '';
+                element.style.background = '';
+                element.style.color = '';
+                document.getElementById('pronunciation-success').style.display = 'none';
+            }, 2000);
+        }
+
+        function finalMessage() {
+            document.getElementById('final-text').style.display = 'block';
+            document.getElementById('final-success').style.display = 'block';
+            
+            // Add confetti effect
+            const colors = ['#000000', '#DD0000', '#FFCC00'];
+            for (let i = 0; i < 100; i++) {
+                setTimeout(() => {
+                    createConfetti(colors[Math.floor(Math.random() * colors.length)]);
+                }, i * 50);
+            }
+        }
+
+        function createConfetti(color) {
+            const confetti = document.createElement('div');
+            confetti.style.position = 'fixed';
+            confetti.style.left = Math.random() * 100 + 'vw';
+            confetti.style.top = '-10px';
+            confetti.style.width = '10px';
+            confetti.style.height = '10px';
+            confetti.style.backgroundColor = color;
+            confetti.style.transform = 'rotate(45deg)';
+            confetti.style.zIndex = '9999';
+            confetti.style.pointerEvents = 'none';
+            
+            document.body.appendChild(confetti);
+            
+            const animation = confetti.animate([
+                { transform: 'translateY(0) rotate(0deg)', opacity: 1 },
+                { transform: 'translateY(100vh) rotate(720deg)', opacity: 0 }
+            ], {
+                duration: 4000,
+                easing: 'cubic-bezier(0.25, 0.46, 0.45, 0.94)'
+            });
+            
+            animation.onfinish = () => confetti.remove();
+        }
+
+        // Preload next slide for smoother transitions
+        function preloadSlide(n) {
+            const nextIndex = (n + totalSlides) % totalSlides;
+            const nextSlide = slides[nextIndex];
+            // Force layout calculation for smoother animation
+            nextSlide.offsetHeight;
+        }
+
+        // Enhanced touch/swipe support for iPad
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        document.addEventListener('touchstart', e => {
+            touchStartX = e.changedTouches[0].screenX;
+        });
+
+        document.addEventListener('touchend', e => {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe();
+        });
+
+        function handleSwipe() {
+            const swipeThreshold = 50;
+            const diff = touchStartX - touchEndX;
+            
+            if (Math.abs(diff) > swipeThreshold) {
+                if (diff > 0) {
+                    nextSlide(); // Swipe left - next slide
+                } else {
+                    previousSlide(); // Swipe right - previous slide
+                }
+            }
+        }
+    </script>
+</body>
+</html>
