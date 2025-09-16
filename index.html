@@ -543,29 +543,89 @@
         }
 
         @media (max-width: 767px) {
+            .slide {
+                padding: 10px 4px;
+                width: 99vw;
+                height: 99vh;
+                max-width: 100vw;
+                max-height: 100vh;
+            }
             .food-grid {
-                flex-wrap: wrap;
-                gap: 10px 8px;
+                grid-template-columns: 1fr 1fr;
+                gap: 6px 4px;
+            }
+            .food-item {
+                padding: 6px;
             }
             .image-placeholder {
-                height: 180px;
-                min-width: 120px;
+                height: 90px !important;
+                min-width: 60px;
+                font-size: 0.8rem;
+                margin: 4px 0;
             }
             .slide.active .image-placeholder:first-of-type {
-                height: 220px !important;
-                max-width: 95vw;
+                height: 120px !important;
+                max-width: 98vw;
             }
             .benefits-grid {
-                grid-template-columns: repeat(2, 1fr);
+                grid-template-columns: 1fr;
+                gap: 8px;
+            }
+            .benefit-card {
+                padding: 8px 4px;
+                font-size: 0.9rem;
             }
             .comparison-grid {
                 grid-template-columns: 1fr;
+                gap: 8px;
+            }
+            .comparison-item {
+                padding: 8px 2px;
+                font-size: 0.9rem;
             }
             h1 {
-                font-size: 2.1rem;
+                font-size: 1.1rem;
+                margin-bottom: 8px;
             }
             h2 {
-                font-size: 1.4rem;
+                font-size: 1rem;
+                margin-bottom: 8px;
+            }
+            h3 {
+                font-size: 0.9rem;
+                margin-bottom: 4px;
+            }
+            .large-text {
+                font-size: 0.95rem;
+                margin: 6px 0;
+            }
+            .pronunciation-word {
+                padding: 8px;
+                margin: 4px;
+                min-width: 80px;
+                font-size: 0.9rem;
+            }
+            .qr-code {
+                width: 80px;
+                height: 80px;
+                margin: 8px auto;
+            }
+            .flag-decoration {
+                width: 40px;
+                height: 24px;
+                top: 8px;
+                left: 8px;
+            }
+            .slide-counter {
+                top: 8px;
+                right: 8px;
+                padding: 4px 8px;
+                font-size: 0.8rem;
+            }
+            .interactive-button, .nav-button {
+                font-size: 0.9rem;
+                padding: 8px 12px;
+                margin: 4px;
             }
         }
 
@@ -1008,7 +1068,7 @@
                 <div class="comparison-item">
                     <h3>📸 Instagram</h3>
                     <div class="qr-code">
-                            <img src="img/insta.JPG" alt="Instagram QR code" style="width:100%; height:100%; object-fit:cover; border-radius:12px;" />
+                            <img src="img/insta.jpg" alt="Instagram QR code" style="width:100%; height:100%; object-fit:cover; border-radius:12px;" />
                     </div>
                     <p><strong>Follow my Germany journey!</strong></p>
                     <a href="https://www.instagram.com/matteo.ise?igsh=MWs1NDQxazJscjJ1eg%3D%3D&utm_source=qr" target="_blank" style="display:inline-block; margin-top:8px; color:#DD0000; font-weight:600; text-decoration:underline; word-break:break-all;">instagram.com/matteo.ise</a>
@@ -1024,45 +1084,48 @@
                 </div>
             </div>
             
-            <div class="large-text">
+           <div class="large-text">
                 <strong>📧 Message me about Germany anytime! 📧</strong>
-
+            </div>
+            
+            <button class="interactive-button pulse" style="font-size: 1.0rem; padding: 10px 14px; text-align: center;">
+                <span style="display: flex; align-items: center; justify-content: center; width: 100%; height: 100%;">🤝 Let's Be Friends!</span>
+            </button>
+            
         </div>
 
-        <!-- Slide 11: German Youth Slang Fun -->
+        <!-- Slide 11: German Youth Slang Fun + QR Code -->
         <div class="slide">
             <div class="flag-decoration"></div>
             <div class="slide-counter">11 / 12</div>
             <h2>🗣️ German Youth Slang Fun!</h2>
             <h3>Who wants to try? (One brave volunteer!)</h3>
-            <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 16px; margin: 32px 0;">
-            <button type="button" class="pronunciation-word" onclick="pronounceWord(this, 'Geil', 'GUY-l', 'Cool/awesome')">
-                <h3>😎 "Geil"</h3>
-                <p>= Cool, awesome</p>
-            </button>
-            <button type="button" class="pronunciation-word" onclick="pronounceWord(this, 'Läuft', 'LOYFT', 'It’s going well')">
-                <h3>🏃‍♂️ "Läuft"</h3>
-                <p>= It’s going well</p>
-            </button>
-            <button type="button" class="pronunciation-word" onclick="pronounceWord(this, 'Cringe', 'KRINJ', 'Awkward/embarrassing')">
-                <h3>😬 "Cringe"</h3>
-                <p>= Awkward/embarrassing</p>
-            </button>
-            <button type="button" class="pronunciation-word" onclick="pronounceWord(this, 'Ehrenmann', 'EH-ren-mann', 'Legend/bro')">
-                <h3>🤝 "Ehrenmann"</h3>
-                <p>= Legend, bro</p>
-            </button>
-            <button type="button" class="pronunciation-word" onclick="pronounceWord(this, 'Moin', 'MOYN', 'Hi/hello (north)')">
-                <h3>👋 "Moin"</h3>
-                <p>= Hi/hello (north)</p>
-            </button>
+            <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin: 12px 0;">
+                <button type="button" class="pronunciation-word" onclick="pronounceWord(this, 'Geil', 'GUY-l', 'Cool/awesome')">
+                    <h3 style="font-size:1em;">😎 "Geil"</h3>
+                    <p style="font-size:0.95em;">= Cool, awesome</p>
+                </button>
+                <button type="button" class="pronunciation-word" onclick="pronounceWord(this, 'Läuft', 'LOYFT', 'It’s going well')">
+                    <h3 style="font-size:1em;">🏃‍♂️ "Läuft"</h3>
+                    <p style="font-size:0.95em;">= It’s going well</p>
+                </button>
+                <button type="button" class="pronunciation-word" onclick="pronounceWord(this, 'Cringe', 'KRINJ', 'Awkward/embarrassing')">
+                    <h3 style="font-size:1em;">😬 "Cringe"</h3>
+                    <p style="font-size:0.95em;">= Awkward/embarrassing</p>
+                </button>
+                <button type="button" class="pronunciation-word" onclick="pronounceWord(this, 'Ehrenmann', 'EH-ren-mann', 'Legend/bro')">
+                    <h3 style="font-size:1em;">🤝 "Ehrenmann"</h3>
+                    <p style="font-size:0.95em;">= Legend, bro</p>
+                </button>
+                <button type="button" class="pronunciation-word" onclick="pronounceWord(this, 'Moin', 'MOYN', 'Hi/hello (north)')">
+                    <h3 style="font-size:1em;">👋 "Moin"</h3>
+                    <p style="font-size:0.95em;">= Hi/hello (north)</p>
+                </button>
             </div>
             <div class="large-text">
                 <strong>🏆 One volunteer says it best – gets a prize! 🏆</strong>
             </div>
-            <div class="success-message" id="pronunciation-success">
-                Geil! Your German youth slang is on point! 🎉
-            </div>
+            
         </div>
 
         <!-- Slide 12: Final Message -->
@@ -1080,7 +1143,9 @@
             </div>
             
             <button class="interactive-button pulse" onclick="finalMessage()" style="font-size: 1.8rem; padding: 24px 48px;">
-                🗣️ Everyone Say Together!
+                <span style="display: flex; align-items: center; justify-content: center; width: 100%; height: 100%;">🗣️ Everyone Say Together!</span>
+            </button>
+                
             </button>
             
             <div class="large-text" id="final-text" style="display: none;">
@@ -1095,7 +1160,19 @@
             
             <div class="success-message" id="final-success" style="display: none;">
                 Thank you for this amazing time! See you in Germany! 🚀✨
+
+                <div class="large-text" style="margin-top:12px;">
+                <strong>📲 Scan for all slides & info:</strong>
             </div>
+            <a href="https://matteo-ise.github.io/PresentationGermanyInternationalCorner/" target="_blank" style="display:inline-block;">
+                <div class="qr-code" style="margin:8px auto;">
+                    <img src="img/qrgit.png" alt="GitHub Präsentation QR" style="width:100%; height:100%; object-fit:cover; border-radius:12px;" />
+                </div>
+                <div style="font-size:0.85em; color:#888; margin-top:2px;">matteo-ise.github.io/PresentationGermanyInternationalCorner/</div>
+            </a>
+            </div>
+        
+            
         </div>
     </div>
 
@@ -1106,9 +1183,14 @@
     </div>
 
     <script>
+
+        // Ensure only the first slide is active on load
         let currentSlide = 0;
         const slides = document.querySelectorAll('.slide');
         const totalSlides = slides.length;
+        slides.forEach((slide, idx) => {
+            slide.classList.toggle('active', idx === 0);
+        });
 
         function showSlide(n) {
             slides[currentSlide].classList.remove('active');
