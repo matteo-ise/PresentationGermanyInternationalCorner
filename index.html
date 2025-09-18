@@ -627,6 +627,7 @@
                 padding: 8px 12px;
                 margin: 4px;
             }
+            
         }
 
         /* Smooth scrolling for content overflow */
@@ -644,6 +645,182 @@
             background: rgba(255, 204, 0, 0.3);
             color: #1a1a2e;
         }
+
+        /* Personal Card Styling */
+    .personal-card {
+        background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(248, 249, 250, 0.95) 100%);
+        backdrop-filter: blur(20px);
+        border: 1px solid rgba(255, 204, 0, 0.3);
+        border-radius: 28px;
+        padding: 32px;
+        margin: 24px auto;
+        max-width: 600px;
+        height: 300px;
+        box-shadow: 
+            0 20px 40px rgba(0, 0, 0, 0.15),
+            0 8px 24px rgba(0, 0, 0, 0.08),
+            inset 0 1px 0 rgba(255, 255, 255, 0.8);
+        position: relative;
+        overflow: hidden;
+        transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+    }
+
+    .personal-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 4px;
+        background: linear-gradient(90deg, #FFCC00 0%, #DD0000 50%, #000000 100%);
+        border-radius: 28px 28px 0 0;
+    }
+
+    .personal-card:hover {
+        transform: translateY(-5px) scale(1.02);
+        box-shadow: 
+            0 32px 64px rgba(0, 0, 0, 0.2),
+            0 16px 32px rgba(0, 0, 0, 0.12),
+            inset 0 1px 0 rgba(255, 255, 255, 0.9);
+    }
+
+    .card-content {
+        display: flex;
+        align-items: center;
+        gap: 32px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .profile-image {
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+        border: 4px solid #FFCC00;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 2.5rem;
+        color: #6c757d;
+        position: relative;
+        overflow: hidden;
+        box-shadow: 
+            0 12px 24px rgba(255, 204, 0, 0.3),
+            0 6px 12px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+    }
+
+    .profile-image::before {
+        content: '';
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: linear-gradient(45deg, transparent, rgba(255, 204, 0, 0.2), transparent);
+        animation: profileShimmer 3s infinite;
+    }
+
+    @keyframes profileShimmer {
+        0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+        100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+    }
+
+    .profile-image:hover {
+        transform: scale(1.1) rotate(5deg);
+        border-color: #DD0000;
+        box-shadow: 
+            0 16px 32px rgba(221, 0, 0, 0.4),
+            0 8px 16px rgba(0, 0, 0, 0.15);
+    }
+
+    .name-section {
+        flex: 1;
+        min-width: 250px;
+        text-align: left;
+    }
+
+    .name-german {
+        font-size: 2.2rem;
+        font-weight: 800;
+        color: #1a1a2e;
+        margin-bottom: 8px;
+        background: linear-gradient(135deg, #DD0000 0%, #000000 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+
+    .name-chinese {
+        font-size: 1.8rem;
+        font-weight: 600;
+        color: #FFCC00;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        margin-bottom: 12px;
+        font-family: 'SF Pro Display', 'PingFang TC', 'Hiragino Sans GB', sans-serif;
+    }
+
+    .title-role {
+        font-size: 1.3rem;
+        color: #6c757d;
+        font-weight: 500;
+        margin-bottom: 8px;
+    }
+
+    .location-info {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 1.1rem;
+        color: #495057;
+        font-weight: 500;
+    }
+
+    .location-flag {
+        font-size: 1.4rem;
+    }
+
+    @media (max-width: 767px) {
+        .personal-card {
+            padding: 20px;
+            margin: 16px auto;
+        }
+        
+        .card-content {
+            flex-direction: column;
+            gap: 20px;
+            text-align: center;
+        }
+        
+        .name-section {
+            text-align: center;
+            min-width: auto;
+        }
+        
+        .profile-image {
+            width: 100px;
+            height: 100px;
+            font-size: 2rem;
+        }
+        
+        .name-german {
+            font-size: 1.6rem;
+        }
+        
+        .name-chinese {
+            font-size: 1.3rem;
+        }
+        
+        .title-role {
+            font-size: 1rem;
+        }
+        
+        .location-info {
+            font-size: 0.9rem;
+            justify-content: center;
+        }
+    }
     </style>
 </head>
 <body>
@@ -658,18 +835,34 @@
             <div class="image-placeholder" style="height:340px; max-width:340px; margin:0 auto 18px auto; background:#f8f9fa; display:flex; align-items:center; justify-content:center; border-radius:24px; width:100%;">
                 <img src="img/frankfurt.jpg" alt="Frankfurt skyline with presenter" style="width:100%; height:100%; object-fit:cover; border-radius:20px;" />
             </div>
+
+            <!-- Personal Card -->
+            <div class="personal-card">
+                <div class="card-content">
+                    <div class="profile-image">
+                        <img src="img/profile.jpg" alt="Profile Image of Matteo Isemann" style="width:100%; height:100%; object-fit:cover; border-radius:50%;" />
+                    </div>
+                    <div class="name-section">
+                        <div class="name-german">Matteo Isemann</div>
+                        <div class="name-chinese">艾梅特 · 靜宜大學</div>
+                        <div class="title-role">German Exchange Student · 企業管理學系</div>
+                        <div class="location-info">
+                            <span class="location-flag">🇩🇪</span>
+                            <span>Frankfurt am Main, Hessen</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
             
             <div class="large-text">
                 Hello! I'm from <strong>Frankfurt, Germany!</strong>
             </div>
             
-            <button class="interactive-button pulse" onclick="teachGreeting()">
+            <button class="interactive-button pulse">
                 🗣️ Learn "Guten Tag" Together!
             </button>
             
-            <div class="success-message" id="greeting-success">
-                Perfect! Everyone say: "GUTEN TAG!" 🎉
-            </div>
+            
         </div>
 
         <!-- Slide 2: German Food Mystery -->
@@ -713,7 +906,7 @@
                     <div class="image-placeholder" style="height: 160px;">
                         <img src="img/sauerkraut.jpeg" alt="German Sauerkraut" style="width:150px; height:150px; object-fit:cover; border-radius:12px; box-shadow:0 2px 8px rgba(0,0,0,0.07);" />
                     </div>
-                    <h3>🥬 Sauerkraut</h3>
+                    <h3>🥬 Pickled cabbage</h3>
                 </div>
             </div>
             
@@ -735,15 +928,13 @@
                     <div class="image-placeholder">
                         <img src="img/lederhosen.jpg" alt="Stereotype man in lederhosen with beer" style="width:100%; height:100%; object-fit:cover; border-radius:12px;" />
                     </div>
-                    <p><strong>All Germans wear Lederhosen</strong></p>
+                    <p><strong>All Germans wear leather pants (Lederhosen)</strong></p>
                 </div>
                 
                 <div class="comparison-item taiwan">
                     <h3>😊 Reality...</h3>
                     <div class="image-placeholder">
-                        <!-- IMAGE NEEDED: Photo of presenter in casual modern clothes -->
-                        <!-- File name: presenter_casual_clothes.jpg -->
-                        👨‍💼 Modern German Reality
+                        <img src="img/clothes.jpeg" alt="Presenter in casual jeans and sneakers" style="width:100%; height:100%; object-fit:cover; border-radius:12px;" />
                     </div>
                     <p><strong>I wear jeans and sneakers like you!</strong></p>
                 </div>
@@ -760,12 +951,14 @@
                 
                 <div class="comparison-item taiwan">
                     <h3>😊 Reality...</h3>
-                    <div class="image-placeholder">
-                        <!-- IMAGE NEEDED: Presenter smiling and laughing -->
-                        <!-- File name: presenter_smiling.jpg -->
-                        😄 Happy & Friendly
+                    <div class="image-placeholder" style="cursor:pointer;" onclick="const v=this.querySelector('video');if(v.paused){v.play();v.loop=true;}">
+                        <video id="laugh-video" width="100%" height="100%" style="max-height:180px; border-radius:12px; object-fit:cover; display:block; margin:0 auto; background:#000;" poster="img/presenter_smiling.jpg" preload="none">
+                            <source src="img/laugh_video.MOV" type="video/quicktime">
+                            <source src="img/laugh_video.MOV" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
                     </div>
-                    <p><strong>I love to laugh and have fun!</strong></p>
+                    <p><strong>We love to laugh and have fun!</strong></p>
                 </div>
             </div>
         </div>
@@ -804,9 +997,7 @@
                 
                 <div class="comparison-item taiwan">
                     <div class="image-placeholder">
-                        <!-- IMAGE NEEDED: Students by the river -->
-                        <!-- File name: frankfurt_students_river.jpg -->
-                        👥 Students Enjoying River Life
+                        <img src="img/students.jpeg" alt="Students relaxing in park" style="width:100%; height:100%; object-fit:cover; border-radius:12px;" />
                     </div>
                     <h3>👥 Student Life</h3>
                 </div>
@@ -835,9 +1026,7 @@
                 </div>
                 <div class="food-item">
                     <div class="image-placeholder" style="height: 170px;">
-                        <!-- IMAGE NEEDED: Apfelwein in special glasses -->
-                        <!-- File name: frankfurt_apfelwein.jpg -->
-                        🍎 Apfelwein
+                        <img src="img/apfelwein.jpg" alt="Traditional apple wine drink" style="width:160px; height:160px; object-fit:cover; border-radius:12px; box-shadow:0 2px 8px rgba(0,0,0,0.07);" />
                     </div>
                     <h3>🍎 Apfelwein</h3>
                     <p>Apple Wine</p>
@@ -851,18 +1040,14 @@
                 </div>
                 <div class="food-item">
                     <div class="image-placeholder" style="height: 170px;">
-                        <!-- IMAGE NEEDED: International food variety -->
-                        <!-- File name: frankfurt_international_food.jpg -->
-                        🌍 International
+                        <img src="img/international_food.jpg" alt="Various international dishes" style="width:160px; height:160px; object-fit:cover; border-radius:12px; box-shadow:0 2px 8px rgba(0,0,0,0.07);" />
                     </div>
                     <h3>🌍 International</h3>
                     <p>Asian, Turkish, Italian</p>
                 </div>
                 <div class="food-item">
                     <div class="image-placeholder" style="height: 170px;">
-                        <!-- IMAGE NEEDED: Presenter eating bubble tea -->
-                        <!-- File name: presenter_bubble_tea.jpg -->
-                        🧋 Bubble Tea
+                        <img src="img/bubbletea.jpeg" alt="Bubble Tea drink" style="width:160px; height:160px; object-fit:cover; border-radius:12px; box-shadow:0 2px 8px rgba(0,0,0,0.07);" />
                     </div>
                     <h3>🧋 Bubble Tea</h3>
                     <p style="font-size:0.95em; color:#888;">Rare in Frankfurt, but you can find it!</p>
@@ -898,13 +1083,11 @@
                 </div>
             </div>
             
-            <button class="interactive-button" onclick="showCultureTip()">
+            <button class="interactive-button">
                 🤝 Cultural Exchange Tip!
             </button>
             
-            <div class="success-message" id="culture-tip">
-                Best of both worlds: German efficiency + Taiwanese kindness = Perfect! 🌟
-            </div>
+            
         </div>
 
         <!-- Slide 7: German University -->
@@ -913,7 +1096,7 @@
             <div class="slide-counter">7 / 12</div>
             
             <h2>🎓 German University</h2>
-            <h3>Study in Germany = FREE!</h3>
+            <h3>Study in Germany!</h3>
             
             <div class="benefits-grid">
                 <div class="benefit-card">
@@ -948,9 +1131,7 @@
             </div>
             
             <div class="image-placeholder">
-                <!-- IMAGE NEEDED: German university campus with international students -->
-                <!-- File name: german_university_campus.jpg -->
-                🏛️ Beautiful German University Campus with International Students
+                <img src="img/happystudent.jpg" alt="German University Campus" style="width:100%; height:100%; object-fit:cover; border-radius:12px;" />
             </div>
             
             <div class="large-text">
@@ -1013,8 +1194,8 @@
             
             <div class="benefits-grid">
                 <div class="benefit-card">
-                    <h3>💰 FREE Education</h3>
-                    <p>Save family money!</p>
+                    <h3>💰 Very Good Education</h3>
+                    <p>Scholarships available!</p>
                 </div>
                 
                 <div class="benefit-card">
@@ -1122,9 +1303,7 @@
                     <p style="font-size:0.95em;">= Hi/hello (north)</p>
                 </button>
             </div>
-            <div class="large-text">
-                <strong>🏆 One volunteer says it best – gets a prize! 🏆</strong>
-            </div>
+            
             
         </div>
 
@@ -1193,6 +1372,12 @@
         });
 
         function showSlide(n) {
+            // Stop video if present on current slide
+            const laughVideo = slides[currentSlide].querySelector('#laugh-video');
+            if (laughVideo) {
+                laughVideo.pause();
+                laughVideo.currentTime = 0;
+            }
             slides[currentSlide].classList.remove('active');
             currentSlide = (n + totalSlides) % totalSlides;
             slides[currentSlide].classList.add('active');
