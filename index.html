@@ -646,181 +646,163 @@
             color: #1a1a2e;
         }
 
-        /* Personal Card Styling */
-    .personal-card {
-        background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(248, 249, 250, 0.95) 100%);
-        backdrop-filter: blur(20px);
-        border: 1px solid rgba(255, 204, 0, 0.3);
-        border-radius: 28px;
-        padding: 32px;
-        margin: 24px auto;
-        max-width: 600px;
-        height: 300px;
-        box-shadow: 
-            0 20px 40px rgba(0, 0, 0, 0.15),
-            0 8px 24px rgba(0, 0, 0, 0.08),
-            inset 0 1px 0 rgba(255, 255, 255, 0.8);
-        position: relative;
-        overflow: hidden;
-        transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
-    }
-
-    .personal-card::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 4px;
-        background: linear-gradient(90deg, #FFCC00 0%, #DD0000 50%, #000000 100%);
-        border-radius: 28px 28px 0 0;
-    }
-
-    .personal-card:hover {
-        transform: translateY(-5px) scale(1.02);
-        box-shadow: 
-            0 32px 64px rgba(0, 0, 0, 0.2),
-            0 16px 32px rgba(0, 0, 0, 0.12),
-            inset 0 1px 0 rgba(255, 255, 255, 0.9);
-    }
-
-    .card-content {
-        display: flex;
-        align-items: center;
-        gap: 32px;
-        flex-wrap: wrap;
-        justify-content: center;
-    }
-
-    .profile-image {
-        width: 120px;
-        height: 120px;
-        border-radius: 50%;
-        background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-        border: 4px solid #FFCC00;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 2.5rem;
-        color: #6c757d;
-        position: relative;
-        overflow: hidden;
-        box-shadow: 
-            0 12px 24px rgba(255, 204, 0, 0.3),
-            0 6px 12px rgba(0, 0, 0, 0.1);
-        transition: all 0.3s ease;
-    }
-
-    .profile-image::before {
-        content: '';
-        position: absolute;
-        top: -50%;
-        left: -50%;
-        width: 200%;
-        height: 200%;
-        background: linear-gradient(45deg, transparent, rgba(255, 204, 0, 0.2), transparent);
-        animation: profileShimmer 3s infinite;
-    }
-
-    @keyframes profileShimmer {
-        0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
-        100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
-    }
-
-    .profile-image:hover {
-        transform: scale(1.1) rotate(5deg);
-        border-color: #DD0000;
-        box-shadow: 
-            0 16px 32px rgba(221, 0, 0, 0.4),
-            0 8px 16px rgba(0, 0, 0, 0.15);
-    }
-
-    .name-section {
-        flex: 1;
-        min-width: 250px;
-        text-align: left;
-    }
-
-    .name-german {
-        font-size: 2.2rem;
-        font-weight: 800;
-        color: #1a1a2e;
-        margin-bottom: 8px;
-        background: linear-gradient(135deg, #DD0000 0%, #000000 100%);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-    }
-
-    .name-chinese {
-        font-size: 1.8rem;
-        font-weight: 600;
-        color: #FFCC00;
-        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        margin-bottom: 12px;
-        font-family: 'SF Pro Display', 'PingFang TC', 'Hiragino Sans GB', sans-serif;
-    }
-
-    .title-role {
-        font-size: 1.3rem;
-        color: #6c757d;
-        font-weight: 500;
-        margin-bottom: 8px;
-    }
-
-    .location-info {
-        display: flex;
-        align-items: center;
-        gap: 8px;
-        font-size: 1.1rem;
-        color: #495057;
-        font-weight: 500;
-    }
-
-    .location-flag {
-        font-size: 1.4rem;
-    }
-
-    @media (max-width: 767px) {
+        /* Personal Card - kompakter und für seitliche Positionierung */
         .personal-card {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(248, 249, 250, 0.95) 100%);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 204, 0, 0.3);
+            border-radius: 20px;
             padding: 20px;
-            margin: 16px auto;
+            margin: 0;
+            flex: none;
+            width: 320px;
+            height: 240px;
+            box-shadow: 
+                0 15px 30px rgba(0, 0, 0, 0.12),
+                0 6px 16px rgba(0, 0, 0, 0.06),
+                inset 0 1px 0 rgba(255, 255, 255, 0.8);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+
         }
-        
+
+        .personal-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #FFCC00 0%, #DD0000 50%, #000000 100%);
+            border-radius: 20px 20px 0 0;
+        }
+
+        .personal-card:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 
+                0 20px 40px rgba(0, 0, 0, 0.15),
+                0 10px 20px rgba(0, 0, 0, 0.08),
+                inset 0 1px 0 rgba(255, 255, 255, 0.9);
+        }
+
         .card-content {
+            display: flex;
             flex-direction: column;
-            gap: 20px;
+            align-items: center;
+            gap: 16px;
             text-align: center;
         }
-        
+
+        .profile-image {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border: 3px solid #FFCC00;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            color: #6c757d;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 
+                0 8px 16px rgba(255, 204, 0, 0.25),
+                0 4px 8px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+        }
+
+        .profile-image:hover {
+            transform: scale(1.1) rotate(5deg);
+            border-color: #DD0000;
+        }
+
         .name-section {
             text-align: center;
-            min-width: auto;
         }
-        
-        .profile-image {
-            width: 100px;
-            height: 100px;
-            font-size: 2rem;
-        }
-        
+
         .name-german {
-            font-size: 1.6rem;
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: #1a1a2e;
+            margin-bottom: 4px;
+            background: linear-gradient(135deg, #DD0000 0%, #000000 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
-        
+
         .name-chinese {
-            font-size: 1.3rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #FFCC00;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin-bottom: 8px;
+            font-family: 'SF Pro Display', 'PingFang TC', 'Hiragino Sans GB', sans-serif;
         }
-        
+
         .title-role {
+            font-size: 0.9rem;
+            color: #6c757d;
+            font-weight: 500;
+            margin-bottom: 6px;
+            line-height: 1.3;
+        }
+
+        .location-info {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            font-size: 0.85rem;
+            color: #495057;
+            font-weight: 500;
+        }
+
+        .location-flag {
             font-size: 1rem;
         }
-        
-        .location-info {
-            font-size: 0.9rem;
-            justify-content: center;
+
+        /* Layout für Slide 1 - nebeneinander mit gleicher Größe */
+.slide-1-content {
+    display: flex;
+    align-items: flex-start;
+    gap: 32px;
+    justify-content: center;
+    margin: 20px 0;
+    flex-wrap: wrap;
+}
+.frankfurt-image-container {
+    width: 320px;
+    height: 240px;
+    flex: none;
+}
+
+.frankfurt-image-container .image-placeholder {
+    height: 240px !important;
+    width: 100% !important;
+    margin: 0 !important;
+}
+        /* Mobile Anpassungen */
+        @media (max-width: 967px) {
+            .slide-1-content {
+                flex-direction: column;
+                align-items: center;
+                gap: 20px;
+            }
+            
+            .personal-card {
+                width: 90%;
+                max-width: 400px;
+                height: auto;
+            }
+            
+            .frankfurt-image-container {
+                min-width: auto;
+                max-width: 90%;
+            }
         }
-    }
     </style>
 </head>
 <body>
@@ -832,23 +814,25 @@
             
             <h1>🇩🇪 Guten Tag from Frankfurt! 🇹🇼</h1>
             
-            <div class="image-placeholder" style="height:340px; max-width:340px; margin:0 auto 18px auto; background:#f8f9fa; display:flex; align-items:center; justify-content:center; border-radius:24px; width:100%;">
-                <img src="img/frankfurt.jpg" alt="Frankfurt skyline with presenter" style="width:100%; height:100%; object-fit:cover; border-radius:20px;" />
-            </div>
-
-            <!-- Personal Card -->
-            <div class="personal-card">
-                <div class="card-content">
-                    <div class="profile-image">
-                        <img src="img/profile.jpg" alt="Profile Image of Matteo Isemann" style="width:100%; height:100%; object-fit:cover; border-radius:50%;" />
+           <!-- Neues Layout: Frankfurt-Bild und Personal Card nebeneinander -->
+            <div class="slide-1-content">
+                <div class="frankfurt-image-container">
+                    <div class="image-placeholder" style="height:240px; background:#f8f9fa; display:flex; align-items:center; justify-content:center; border-radius:24px; width:100%;">
+                        <img src="img/frankfurt.jpg" alt="Frankfurt skyline with presenter" style="width:100%; height:100%; object-fit:cover; border-radius:20px;" />
                     </div>
-                    <div class="name-section">
-                        <div class="name-german">Matteo Isemann</div>
-                        <div class="name-chinese">艾梅特 · 靜宜大學</div>
-                        <div class="title-role">German Exchange Student · 企業管理學系</div>
-                        <div class="location-info">
-                            <span class="location-flag">🇩🇪</span>
-                            <span>Frankfurt am Main, Hessen</span>
+                </div>
+                
+                <!-- Personal Card - HIER REIN verschieben -->
+                <div class="personal-card">
+                    <div class="card-content">
+                        <div class="profile-image">
+                            <img src="img/profile.jpg" alt="Profile Image of Matteo Isemann" style="width:100%; height:100%; object-fit:cover; border-radius:50%;" />
+                        </div>
+                        <div class="name-section">
+                            <div class="name-german">Matteo Isemann</div>
+                            <div class="name-chinese">艾梅特 · 靜宜大學</div>
+                            <div class="title-role">German Exchange Student<br>企業管理學系</div>
+    
                         </div>
                     </div>
                 </div>
@@ -874,11 +858,11 @@
             <h3>Find the FAKE German Food!</h3>
             
             <div class="food-grid">
-                <div class="food-item" data-food="pretzel" onclick="selectFood(this)">
+                <div class="food-item" data-food="haxe" onclick="selectFood(this)">
                     <div class="image-placeholder" style="height: 160px;">
-                        <img src="img/pretzel.jpg" alt="Traditional German Pretzel" style="width:150px; height:150px; object-fit:cover; border-radius:12px; box-shadow:0 2px 8px rgba(0,0,0,0.07);" />
+                        <img src="img/haxe.jpg" alt="Traditional German Haxe" style="width:150px; height:150px; object-fit:cover; border-radius:12px; box-shadow:0 2px 8px rgba(0,0,0,0.07);" />
                     </div>
-                    <h3>🥨 Pretzel</h3>
+                    <h3>🍖 Haxe (pork knuckle with crispy skin)</h3>
                 </div>
                 
                 <div class="food-item" data-food="sausage" onclick="selectFood(this)">
@@ -934,7 +918,7 @@
                 <div class="comparison-item taiwan">
                     <h3>😊 Reality...</h3>
                     <div class="image-placeholder">
-                        <img src="img/clothes.jpeg" alt="Presenter in casual jeans and sneakers" style="width:100%; height:100%; object-fit:cover; border-radius:12px;" />
+                        <img src="img/clothes2.jpeg" alt="Presenter in casual jeans and sneakers" style="width:100%; height:100%; object-fit:cover; border-radius:12px;" />
                     </div>
                     <p><strong>I wear jeans and sneakers like you!</strong></p>
                 </div>
@@ -950,7 +934,7 @@
                 </div>
                 
                 <div class="comparison-item taiwan">
-                    <h3>😊 Reality...</h3>
+                    <h3>😊 ...</h3>
                     <div class="image-placeholder" style="cursor:pointer;" onclick="const v=this.querySelector('video');if(v.paused){v.play();v.loop=true;}">
                         <video id="laugh-video" width="100%" height="100%" style="max-height:180px; border-radius:12px; object-fit:cover; display:block; margin:0 auto; background:#000;" poster="img/presenter_smiling.jpg" preload="none">
                             <source src="img/laugh_video.MOV" type="video/quicktime">
@@ -1040,10 +1024,10 @@
                 </div>
                 <div class="food-item">
                     <div class="image-placeholder" style="height: 170px;">
-                        <img src="img/international_food.jpg" alt="Various international dishes" style="width:160px; height:160px; object-fit:cover; border-radius:12px; box-shadow:0 2px 8px rgba(0,0,0,0.07);" />
+                        <img src="img/schnitzel.jpg" alt="Schnitzel" style="width:160px; height:160px; object-fit:cover; border-radius:12px; box-shadow:0 2px 8px rgba(0,0,0,0.07);" />
                     </div>
-                    <h3>🌍 International</h3>
-                    <p>Asian, Turkish, Italian</p>
+                    <h3>🍽️ Schnitzel</h3>
+                    <p>German breaded meat dish</p>
                 </div>
                 <div class="food-item">
                     <div class="image-placeholder" style="height: 170px;">
@@ -1083,9 +1067,7 @@
                 </div>
             </div>
             
-            <button class="interactive-button">
-                🤝 Cultural Exchange Tip!
-            </button>
+        
             
             
         </div>
@@ -1275,36 +1257,31 @@
             
         </div>
 
-        <!-- Slide 11: German Youth Slang Fun + QR Code -->
+        
+        <!-- Slide 11: German Words Fun -->
         <div class="slide">
             <div class="flag-decoration"></div>
             <div class="slide-counter">11 / 12</div>
-            <h2>🗣️ German Youth Slang Fun!</h2>
+            <h2>🗣️ German Words Fun!</h2>
             <h3>Who wants to try? (One brave volunteer!)</h3>
             <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin: 12px 0;">
-                <button type="button" class="pronunciation-word" onclick="pronounceWord(this, 'Geil', 'GUY-l', 'Cool/awesome')">
-                    <h3 style="font-size:1em;">😎 "Geil"</h3>
-                    <p style="font-size:0.95em;">= Cool, awesome</p>
+                <button type="button" class="pronunciation-word" onclick="pronounceWord(this, 'Guten Tag', 'GOO-ten tahk', 'Good day/Hello')">
+                    <h3 style="font-size:1em;">👋 "Guten Tag"</h3>
+                    <p style="font-size:0.95em;">= Good day/Hello</p>
                 </button>
-                <button type="button" class="pronunciation-word" onclick="pronounceWord(this, 'Läuft', 'LOYFT', 'It’s going well')">
-                    <h3 style="font-size:1em;">🏃‍♂️ "Läuft"</h3>
-                    <p style="font-size:0.95em;">= It’s going well</p>
-                </button>
-                <button type="button" class="pronunciation-word" onclick="pronounceWord(this, 'Cringe', 'KRINJ', 'Awkward/embarrassing')">
-                    <h3 style="font-size:1em;">😬 "Cringe"</h3>
-                    <p style="font-size:0.95em;">= Awkward/embarrassing</p>
-                </button>
-                <button type="button" class="pronunciation-word" onclick="pronounceWord(this, 'Ehrenmann', 'EH-ren-mann', 'Legend/bro')">
+                <button type="button" class="pronunciation-word" onclick="pronounceWord(this, 'Ehrenmann', 'EH-ren-mann', 'Legend/Bro')">
                     <h3 style="font-size:1em;">🤝 "Ehrenmann"</h3>
-                    <p style="font-size:0.95em;">= Legend, bro</p>
+                    <p style="font-size:0.95em;">= Legend, Bro</p>
                 </button>
-                <button type="button" class="pronunciation-word" onclick="pronounceWord(this, 'Moin', 'MOYN', 'Hi/hello (north)')">
-                    <h3 style="font-size:1em;">👋 "Moin"</h3>
-                    <p style="font-size:0.95em;">= Hi/hello (north)</p>
+                <button type="button" class="pronunciation-word" onclick="pronounceWord(this, 'Gude', 'GOO-deh', 'Frankfurt Hello')">
+                    <h3 style="font-size:1em;">🏙️ "Gude"</h3>
+                    <p style="font-size:0.95em;">= Frankfurt Hello</p>
+                </button>
+                <button type="button" class="pronunciation-word" onclick="pronounceWord(this, 'Rheinheitsgebot', 'RINE-heights-geh-boht', 'Beer Purity Law')">
+                    <h3 style="font-size:1em;">🍺 "Rheinheitsgebot"</h3>
+                    <p style="font-size:0.95em;">= Beer Purity Law</p>
                 </button>
             </div>
-            
-            
         </div>
 
         <!-- Slide 12: Final Message -->
